@@ -75,4 +75,8 @@ public class WebDriverHelper {
         REAL_DRIVER.close();
         REAL_DRIVER.quit();
     }
+    
+    public static WebDriver getWebDriver() {
+        return REAL_DRIVER;
+    }
 }

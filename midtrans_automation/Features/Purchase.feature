@@ -2,6 +2,11 @@
 @tag
 Feature: Purchase Midtrans Pillow
 
+  Background: Lauch midtrans in browser
+    Given User will Lauch midtrans site in browser 
+    And Unauth User verify the product and page content
+
+
   @tag1
   Scenario: Unauth Customer should able to purchase sucessfully “Pillow” using Credit Card as payment method.
     Given User Launch browser
