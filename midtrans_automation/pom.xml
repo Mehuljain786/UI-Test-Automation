@@ -3,4 +3,108 @@
   <groupId>com.uitest.automation</groupId>
   <artifactId>midtrans_automation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+        <cucumber.version>1.2.5</cucumber.version>
+        <selenium.version>3.141.0</selenium.version>
+        <cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
+        <assertj-assert>3.2.0</assertj-assert>
+        <mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
+        <maven-resource-plugin>2.7</maven-resource-plugin>
+        <maven-compiler-plugin>3.6.0</maven-compiler-plugin>
+        <maven-cucumber-reporting>0.0.8</maven-cucumber-reporting>
+        <cucumber.jvm.parallel.version>5.0.0</cucumber.jvm.parallel.version>
+        <utf-8>UTF-8</utf-8>
+        <java-version>1.8</java-version>
+        <org.jetbrains>13.0</org.jetbrains>
+    </properties>
+  
+  <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/local/config.properties</profile.path>
+                <profile.name>local</profile.name>
+                <testToRun>**/*IT.class</testToRun>
+            </properties>
+  </profile>
+  </profiles>
+  
+  
+  
+  <!-- All the test dependencies should be declared in this section -->
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0-alpha-6</version>
+    </dependency>
+   
+    <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>5.0.0</version>
+    </dependency>
+   
+    <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-jvm-deps</artifactId>
+            <version>${cucumber-jvm-deps}</version>
+    </dependency>
+   
+    <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>4.7.0</version>
+    </dependency>
+   
+    <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium.version}</version>
+    </dependency>
+    
+    <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>${selenium.version}</version>
+    </dependency>
+    
+    <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+    </dependency>
+    
+    <!--Full page screenshots -->
+    <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>1.5.2</version>
+    </dependency>
+    
+    <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+    </dependency>
+    
+    <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${org.jetbrains}</version>
+    </dependency>
+  </dependencies>
+  
+  
 </project>
