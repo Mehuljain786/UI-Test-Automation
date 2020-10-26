@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -72,5 +74,68 @@ public abstract class utilities {
     public static String getCurrentUrl() {
         return webDriver.getCurrentUrl();
     }
+    
+    private static ExpectedCondition<WebElement> visibilityOfElementLocated(final By by) throws NoSuchElementException {
+        return driver -> {
+           try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                LOG.error(e.getMessage());
+            }
+            WebElement element = webDriver.findElement(by);
+            return element.isDisplayed() ? element : null;
+        };
+    }
+    
+    /**
+     * Find the dynamic element wait until its visible
+     *
+     * @param by Element location found by css, xpath, id etc...
+     **/
+    protected static WebElement waitForExpectedElement(final By by) {
+        System.out.println("Waiting for expected element");
+        return wait.until(visibilityOfElementLocated(by));
+    }
 
+    public static void highLightElement(WebElement element)
+    {
+        if (Params.HIGHLIGHT) {
+            JavascriptExecutor js = (JavascriptExecutor) webDriver;
+            js.executeScript("arguments[0].setAttribute('style', 'border: 3px solid Lime;');", element);
+        }
+    }
+    
+    public static void highLightElement(By by)
+    {
+        LOG.info("Element for Highlighting - " + by.toString());
+        highLightElement(waitForExpectedElement(by));
+    }
+    
+    /**
+     * Returns the Text from the element
+     **/
+    public static String getText(final By by){
+        highLightElement(by);
+        return waitForExpectedElement(by).getText();
+    }
+    
+    
+    /**
+     * For regex match with text
+     **/
+    public static boolean MatchTextwithRegex(String regex, String text) {
+        boolean isMatched = false;
+        if ((regex == null) || (text == null)) {
+            throw new NullPointerException("The parameters must not be null");
+        }
+
+        try {
+            isMatched = text.matches(regex);
+        } catch (Exception ex) {
+            LOG.info(ex.getMessage());
+        }
+        return isMatched;
+
+    }
+    
 }

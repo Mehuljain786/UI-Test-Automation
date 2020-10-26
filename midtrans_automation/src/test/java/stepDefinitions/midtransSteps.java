@@ -17,6 +17,6 @@ public class midtransSteps{
 
 	@And("Unauth User verify the product and page content")
 	public void unauth_User_verify_the_product_and_page_content() {
-	    
+		midtransAction.verifyExpectedcontentDisplayed();
 	}
 }
