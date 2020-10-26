@@ -1,20 +1,28 @@
 package core;
 
+import java.util.logging.Level;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WebDriverHelper {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WebDriverHelper.class);
-	private static WebDriver REAL_DRIVER = null;
+	public static WebDriver REAL_DRIVER = null;
     private static final Thread CLOSE_THREAD = new Thread(() -> {
-        //REAL_DRIVER.quit();
         closeWebDriver();
     });
 	static {
+		System.out.println("Sucess");
+		System.out.println("launchBrowser: Browser requested: " + Params.BROWSER);
         launchBrowser();
     }
 	
@@ -49,9 +57,13 @@ public class WebDriverHelper {
     
     
     public static WebDriver startChromeDriver() {
+    	ChromeOptions chromeOptions = getChromeOptions();
         LOG.info("startChromeDriver: initiating... starting a new chrome driver");
+        System.setProperty("webdriver.chrome.driver","/Users/me20050937/git/UI-Test-Automation/midtrans_automation/Drivers/Chromedriver/Mac32/chromedriver");
         REAL_DRIVER = new ChromeDriver();
-        maximize();
+        REAL_DRIVER.get("https://demo.midtrans.com/");
+        //REAL_DRIVER = new SafariDriver();
+        //maximize();
         return REAL_DRIVER;
     }
     
@@ -79,4 +91,18 @@ public class WebDriverHelper {
     public static WebDriver getWebDriver() {
         return REAL_DRIVER;
     }
+    
+    private static ChromeOptions getChromeOptions() {
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.INFO);
+        logPrefs.enable(LogType.DRIVER, Level.INFO);
+        LOG.info("startChromeDriver: initiating... set chromeOptions... for desktop");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--disable-web-security");
+        chromeOptions.addArguments("--allow-running-insecure-content");
+        chromeOptions.addArguments("--start-maximized");
+        LOG.info("startChromeDriver: initiating... set chromeOptions... for desktop... complete");
+        return chromeOptions;
+    }
+
 }

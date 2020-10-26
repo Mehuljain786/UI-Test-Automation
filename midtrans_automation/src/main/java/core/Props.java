@@ -13,7 +13,6 @@ import static java.lang.System.out;
 public class Props {
     private static final Logger LOG = LoggerFactory.getLogger(Props.class);
     private static Properties environmentProps;
-    private static Properties properties;
 
 
     /**
@@ -41,7 +40,7 @@ public class Props {
        if ((key == null) || key.isEmpty()) {
            return "";
        } else {
-           return properties.getProperty(key);
+           return environmentProps.getProperty(key);
 
        }
     }
@@ -61,7 +60,8 @@ public class Props {
     }
 
 
-    public static void loadRunConfigProps(String configPropertyFileLocation) {
+	public static void loadRunConfigProps(String configPropertyFileLocation) {
+	
         environmentProps = new Properties();
         try (InputStream inputStream = Props.class.getResourceAsStream(configPropertyFileLocation)) {
             environmentProps.load(inputStream);
@@ -70,20 +70,8 @@ public class Props {
         } catch (IOException e) {
             LOG.error(e.getMessage());
         }
-        properties = new Properties();
-        try (InputStream inputStream = Props.class.getResourceAsStream(environmentProps.getProperty("profile.path"))) {
-            LOG.info("Input Stream " + inputStream.toString());
-            properties.load(inputStream);
-            properties.list(out);
-            LOG.info("Properties "+properties.toString());
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
-        }
     }
 
-    public static String getEnvironmentProp(String key) {
-        return environmentProps.getProperty("profile.name");
-    }
 
 }
 

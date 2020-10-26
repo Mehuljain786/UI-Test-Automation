@@ -4,8 +4,7 @@ import core.Props;
 import io.cucumber.java.en.*;
 import midtrans_automation_Action.midtransAction;
 
-public class midtransSteps {
-	
+public class midtransSteps{
 	@Given("User will Lauch midtrans site in browser")
 	public void user_will_Lauch_midtrans_site_in_browser() throws Throwable{
 		midtransAction.navigatesTomidtrans();	
