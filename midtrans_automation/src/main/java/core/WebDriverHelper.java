@@ -22,7 +22,6 @@ public class WebDriverHelper {
     });
 	static {
 		System.out.println("Sucess");
-		System.out.println("launchBrowser: Browser requested: " + Params.BROWSER);
         launchBrowser();
     }
 	
@@ -59,11 +58,8 @@ public class WebDriverHelper {
     public static WebDriver startChromeDriver() {
     	ChromeOptions chromeOptions = getChromeOptions();
         LOG.info("startChromeDriver: initiating... starting a new chrome driver");
-        System.setProperty("webdriver.chrome.driver","/Users/me20050937/git/UI-Test-Automation/midtrans_automation/Drivers/Chromedriver/Mac32/chromedriver");
         REAL_DRIVER = new ChromeDriver();
-        REAL_DRIVER.get("https://demo.midtrans.com/");
-        //REAL_DRIVER = new SafariDriver();
-        //maximize();
+        maximize();
         return REAL_DRIVER;
     }
     
