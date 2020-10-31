@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class midtransPage {
+public class MidtransPage {
 
-    private static final Logger LOG = LoggerFactory.getLogger(midtransPage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MidtransPage.class);
     public static By homePageHeader =By.xpath("//a[text()='Coco']");
     public static By midTranstitle =By.xpath("//span[text()='Rp ']/parent::div/parent::*/div[1]");
     public static By productAmount = By.xpath("//div[@class='price']/span[2]");

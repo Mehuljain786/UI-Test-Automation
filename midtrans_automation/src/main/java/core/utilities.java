@@ -116,7 +116,7 @@ public abstract class utilities {
      **/
     public static String getText(final By by){
         highLightElement(by);
-        return waitForExpectedElement(by).getText();
+        return waitForExpectedElement(by).getText().trim();
     }
     
     
@@ -138,4 +138,21 @@ public abstract class utilities {
 
     }
     
+    /**
+     * Click on element using JavaScript
+     **/
+    public static void clickOnElementWithJSExecutor(WebElement element){
+        ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", element);
+    }
+    
+    /**
+     * An expectation for checking an element is visible and enabled such that you
+     * can click it.
+     *
+     * @param by used to find the element
+     * @return the WebElement once it is located and clickable (visible and enabled)
+     */
+    public static WebElement elementToBeClickable(By by) {
+        return (new WebDriverWait(webDriver, DRIVER_WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(by));
+    }
 }

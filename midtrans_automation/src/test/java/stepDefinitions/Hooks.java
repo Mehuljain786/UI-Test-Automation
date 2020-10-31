@@ -1,4 +1,4 @@
-package TestRunner;
+package stepDefinitions;
 
 import core.ExecutionRecord;
 import core.ScreenshotHook;

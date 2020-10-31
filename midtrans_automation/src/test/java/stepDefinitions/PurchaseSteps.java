@@ -1,42 +1,28 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.*;
+import midtrans_automation_Action.PurchaseAction;
 
 public class PurchaseSteps {
 	
-	@Given("User Launch browser")
-	public void user_Launch_browser() {
-	    
-	}
-
-	@When("User open URL {string}")
-	public void user_open_URL(String string) {
-	   
-	}
-
-	@Then("Page title should be {string}")
-	public void page_title_should_be(String string) {
-	    
-	}
-
-	@Then("Amount should be {string}")
-	public void amount_should_be(String string) {
-	    
-	}
-
 	@When("User clicks on Buy Now button")
-	public void user_clicks_on_Buy_Now_button() {
-	    
+	public void user_clicks_on_buy_now_button() {
+		PurchaseAction.clickByNowButton();
 	}
 
 	@Then("Shopping Cart layover screen has to be displayed")
-	public void shopping_Cart_layover_screen_has_to_be_displayed() {
-	    
+	public void shopping_cart_layover_screen_has_to_be_displayed() {
+	    PurchaseAction.verifyShoppingCardScreen();
 	}
 
-	@Then("CHECKOUT button has to be displayed")
-	public void checkout_button_has_to_be_displayed() {
-	    
+	@And("Verify the details on Checkout page")
+	public void verify_the_details_on_checkout_page() {
+		PurchaseAction.verifyShoppingCardContent();
+	}
+
+	@And("Click on CHECKOUT button")
+	public void click_on_checkout_button() {
+		PurchaseAction.clickCheckOut();
 	}
 
 }

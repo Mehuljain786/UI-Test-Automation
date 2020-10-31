@@ -1,162 +1,221 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.uitest.automation</groupId>
-  <artifactId>midtrans_automation</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <properties>
-        <cucumber.version>1.2.5</cucumber.version>
-        <selenium.version>3.141.0</selenium.version>
-        <cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
-        <assertj-assert>3.2.0</assertj-assert>
-        <mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
-        <maven-resource-plugin>2.7</maven-resource-plugin>
-        <maven-compiler-plugin>3.6.0</maven-compiler-plugin>
-        <maven-cucumber-reporting>0.0.8</maven-cucumber-reporting>
-        <cucumber.jvm.parallel.version>5.0.0</cucumber.jvm.parallel.version>
-        <utf-8>UTF-8</utf-8>
-        <java-version>1.8</java-version>
-        <org.jetbrains>13.0</org.jetbrains>
-        <cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
-        <picocontainer>2.15</picocontainer>
-    </properties>
-  
-  <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <profile.path>/profiles/local/config.properties</profile.path>
-                <profile.name>local</profile.name>
-                <testToRun>**/*IT.class</testToRun>
-            </properties>
-  </profile>
-  </profiles>
-  
-  
-  
-  <!-- All the test dependencies should be declared in this section -->
-  <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.0</version>
-    </dependency>
-   
-   
-   <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
-	<dependency>
-    		<groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-surefire-plugin</artifactId>
-    		<version>3.0.0-M5</version>
-	</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.uitest.automation</groupId>
+	<artifactId>midtrans_automation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<cucumber.version>1.2.5</cucumber.version>
+		<selenium.version>3.141.0</selenium.version>
+		<cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
+		<assertj-assert>3.2.0</assertj-assert>
+		<mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
+		<maven-resource-plugin>2.7</maven-resource-plugin>
+		<maven-compiler-plugin>3.6.0</maven-compiler-plugin>
+		<maven-cucumber-reporting>0.0.8</maven-cucumber-reporting>
+		<cucumber.jvm.parallel.version>5.0.0</cucumber.jvm.parallel.version>
+		<utf-8>UTF-8</utf-8>
+		<java-version>1.8</java-version>
+		<org.jetbrains>13.0</org.jetbrains>
+		<cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
+		<picocontainer>2.15</picocontainer>
+		<maven.compiler.version>3.8.1</maven.compiler.version>
+		<aspectj.version>1.8.11</aspectj.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profile.path>/profiles/local/config.properties</profile.path>
+				<profile.name>local</profile.name>
+				<testToRun>**/*IT.class</testToRun>
+			</properties>
+		</profile>
+	</profiles>
 
 
 
-    <dependency>
-            <groupId>com.assertthat</groupId>
-            <artifactId>selenium-shutterbug</artifactId>
-            <version>0.9</version>
-    </dependency>
-    
-    <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>maven-cucumber-reporting</artifactId>
-            <version>5.0.0</version>
-    </dependency>
-   
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-	<dependency>
-    		<groupId>io.cucumber</groupId>
-    		<artifactId>cucumber-junit</artifactId>
-    		<version>6.8.1</version>
-    		<scope>test</scope>
-   </dependency>
+	<!-- All the test dependencies should be declared in this section -->
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.0</version>
+		</dependency>
 
-    
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-	<dependency>
-    		<groupId>io.cucumber</groupId>
-    		<artifactId>cucumber-java</artifactId>
-    		<version>6.8.1</version>
-	</dependency>
 
-   
-    <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>${selenium.version}</version>
-    </dependency>
-    
-    <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
-    </dependency>
-    
-    <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>${selenium.version}</version>
-    </dependency>
-    
-    <!--Full page screenshots -->
-    <dependency>
-            <groupId>ru.yandex.qatools.ashot</groupId>
-            <artifactId>ashot</artifactId>
-            <version>1.5.2</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
-	<dependency>
-    		<groupId>io.cucumber</groupId>
-    		<artifactId>cucumber-core</artifactId>
-    		<version>6.8.1</version>
-	</dependency>
-    
-    
-    <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-    </dependency>
-    
-    <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>${org.jetbrains}</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
- 	<dependency>
-    		<groupId>org.slf4j</groupId>
-    		<artifactId>slf4j-simple</artifactId>
-    		<version>1.6.1</version>
-    		<scope>test</scope>
-	</dependency>
-	
-	<dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <version>${cucumber-jvm-deps}</version>
-    </dependency>
-	
-	<dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>${cucumber.version}</version>
-    </dependency>
-	
-	<dependency>
-            <groupId>org.picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>${picocontainer}</version>
-            <scope>test</scope>
-        </dependency>
-    
-  </dependencies>
-  
-  
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M5</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.assertthat</groupId>
+			<artifactId>selenium-shutterbug</artifactId>
+			<version>0.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>maven-cucumber-reporting</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>6.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>6.8.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<!--Full page screenshots -->
+		<dependency>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>6.8.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>${org.jetbrains}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>${cucumber-jvm-deps}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.picocontainer</groupId>
+			<artifactId>picocontainer</artifactId>
+			<version>${picocontainer}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>4.9.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.0-alpha1</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version> <!-- or whatever current version -->
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<!-- These are the Allure Reporting plugins -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>2.10.0</version>
+				<configuration>
+					<reportVersion>2.9.0</reportVersion>
+					<allureDownloadUrl>https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.9.0/allure-2.9.0.zip</allureDownloadUrl>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
