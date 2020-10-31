@@ -155,4 +155,18 @@ public abstract class utilities {
     public static WebElement elementToBeClickable(By by) {
         return (new WebDriverWait(webDriver, DRIVER_WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(by));
     }
+    
+
+    /**
+     * Wrapper for clear data and sendKeys in Input Text box
+     *
+     * @param by Element location found by css, xpath, id etc...
+     * @param inputText text to be entered
+     **/
+
+    protected static void clearEnterText(By by, String inputText) {
+        waitForExpectedElement(by).clear();
+        waitForExpectedElement(by).sendKeys(inputText);
+        highLightElement(by);
+    }
 }

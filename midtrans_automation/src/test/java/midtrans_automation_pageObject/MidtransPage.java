@@ -13,4 +13,5 @@ public class MidtransPage {
     public static By amountCurrency = By.xpath("//div[@class='price']/span[1]");
     public static By buyNow = By.xpath("//a[@class='btn buy']");
     public static By midtransSubHeader = By.xpath("//div[@class='desc']/span");
+    public static By transactionSuccessStatus = By.xpath("//div[@class='trans-status trans-success']");
 }

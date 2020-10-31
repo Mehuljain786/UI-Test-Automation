@@ -18,6 +18,11 @@ public class MidtransAction extends utilities {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MidtransAction.class);
 
+    /**
+     * Context: This method use to navigate to Midtrans web page
+     *
+     * @author Mehul
+     */
 	public static void navigatesTomidtrans() throws InterruptedException {
 		String url = Props.getProp("midtrans");
 		if (url.equalsIgnoreCase("")) {
@@ -40,6 +45,11 @@ public class MidtransAction extends utilities {
 		}
 	}
 
+    /**
+     * Context: This method Verify content on Midtrans web page
+     *
+     * @author Mehul
+     */
 	public static void verifyExpectedcontentDisplayed() {
 		Assert.assertEquals(midtransHeader, getText(MidtransPage.midTranstitle));
 		System.out.println(
