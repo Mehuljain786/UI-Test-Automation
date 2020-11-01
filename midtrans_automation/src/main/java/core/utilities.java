@@ -169,4 +169,25 @@ public abstract class utilities {
         waitForExpectedElement(by).sendKeys(inputText);
         highLightElement(by);
     }
+    
+    /**
+     * An expectation for checking whether the given frame is available to switch
+     * to. <p> If the frame is available it switches the given driver to the
+     * specified frame.
+     *
+     * @param by used to find the frame
+     */
+    public static WebDriver frameToBeAvailableAndSwitchToIt(final By by) {
+        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(by));
+    }
+    
+    public static void switchToFrame(String frameid){
+
+        webDriver.switchTo().frame(frameid);
+    }
+
+    public static void switchToParentFrame(){
+
+        webDriver.switchTo().defaultContent();
+    }
 }

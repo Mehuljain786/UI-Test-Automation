@@ -15,7 +15,7 @@ public class PurchasePage {
 	 public static By customerDetailsHeading = By.xpath("//*[(@class = 'cart-head')][2]");
 	 public static By nameOfCustomer = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[1]/td[1]");
 	 public static By emailOfCustomer = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[2]/td[1]");
-	 public static By mobileOfCustomer = By.xpath("//*[(@class = 'cart-head')]2]/following::div[@class='cart-section']//tr[3]/td[1]");
+	 public static By mobileOfCustomer = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[3]/td[1]");
 	 public static By cityOfCustomer = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[4]/td[1]");
 	 public static By addressOfCustomer = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[5]/td[1]");
 	 public static By postalCode = By.xpath("//*[(@class = 'cart-head')][2]/following::div[@class='cart-section']//tr[6]/td[1]");
@@ -36,4 +36,5 @@ public class PurchasePage {
 	 public static By passwordOtp = By.xpath("//input[@id='PaRes']");
 	 public static By submitOtp = By.name("ok");
 	 public static By transactionStatusFail = By.xpath("//div[contains(@class,'text-failed')][1]/span");
+	 public static By orderSummaryFrame = By.xpath("//iframe[(@id = 'snap-midtrans')]");
 }

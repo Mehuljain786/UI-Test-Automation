@@ -153,13 +153,6 @@
 			<version>${cucumber.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.picocontainer</groupId>
-			<artifactId>picocontainer</artifactId>
-			<version>${picocontainer}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
 		<dependency>
 			<groupId>net.masterthought</groupId>

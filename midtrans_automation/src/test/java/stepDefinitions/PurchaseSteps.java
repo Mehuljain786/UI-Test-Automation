@@ -20,7 +20,7 @@ public class PurchaseSteps {
 		PurchaseAction.verifyShoppingCardContent();
 	}
 
-	@And("Click on CHECKOUT button")
+	@When("Click on CHECKOUT button")
 	public void click_on_checkout_button() {
 		PurchaseAction.clickCheckOut();
 	}

@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import core.ExecutionRecord;
 import core.ScreenshotHook;
+import core.WebDriverHelper;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -40,6 +41,7 @@ public class Hooks {
             stepRecordHook("FAILED_STEP");        }
             record.closeScenarioRecord(scenario, getDurationBreakdown(estimatedTime));
             record.setTestResults(scenario);
+            WebDriverHelper.closeWebDriver();    
     }
 
     public static String getDurationBreakdown(long millis) {

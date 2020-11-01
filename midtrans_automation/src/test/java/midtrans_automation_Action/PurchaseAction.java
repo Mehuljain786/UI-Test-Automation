@@ -104,6 +104,7 @@ public class PurchaseAction extends utilities{
      * @author Mehul
      */
 	public static void verifyOrderSummaryScreen() {
+		frameToBeAvailableAndSwitchToIt(PurchasePage.orderSummaryFrame);
 		Assert.assertTrue(isElementPresent(PurchasePage.orderSummaryHeading));
 		Assert.assertEquals(OrderSummary, getText(PurchasePage.orderSummaryHeading));
 		Assert.assertEquals(MidtransAction.productAmount, getText(PurchasePage.amountOrderSummary));
@@ -120,6 +121,7 @@ public class PurchaseAction extends utilities{
      */
 	public static void clickContinueButton() {
 		try {
+			frameToBeAvailableAndSwitchToIt(PurchasePage.orderSummaryFrame);
             elementToBeClickable(PurchasePage.continueBtn);
             LOG.info("Continue for click -> " + PurchasePage.continueBtn.toString());
             highLightElement(PurchasePage.continueBtn);

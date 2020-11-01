@@ -26,5 +26,5 @@ Feature: Purchase Midtrans Pillow
     Examples: 
     | Card_Number | Expiry_Date | CVV_Number | Banks_OTP | Payment_status |
     | 4811 1111 1111 1114 | 12/24 | 123 | 112233 | Thank you for your purchase |
-    | 4811 1111 1111 1113 | 12/24 | 123 | 112233 | Transaction failed |
+   # | 4811 1111 1111 1113 | 12/24 | 123 | 112233 | Transaction failed |
    
