@@ -111,7 +111,7 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.continueBtn));
 		Assert.assertTrue(isElementPresent(PurchasePage.crossicon));
 		LOG.info("Verified Order Summary content displayed");
-		//Hooks.stepRecordAndFocusedScreenshot("Verified Order Summary content displayed");
+		Hooks.stepRecordAndFocusedScreenshot("Verified Order Summary content displayed");
 	}
 	
     /**
@@ -128,7 +128,7 @@ public class PurchaseAction extends utilities{
             waitForExpectedElement(PurchasePage.continueBtn).click();
             LOG.info("Continue button clicked -> " + PurchasePage.continueBtn.toString());
         } catch (Exception exception) {
-            //Hooks.stepRecordAndFocusedScreenshot("Failed to Click on Continue element " + exception.getMessage());
+            Hooks.stepRecordAndFocusedScreenshot("Failed to Click on Continue element " + exception.getMessage());
             Assert.fail();
         }
 	}
@@ -143,7 +143,7 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.backChevron));
 		Assert.assertTrue(isElementPresent(PurchasePage.creditDebitCard));
 		LOG.info("Verified Payment Modes are displayed");
-		//Hooks.stepRecordAndFocusedScreenshot("Verified Payment Modes are displayed");
+		Hooks.stepRecordAndFocusedScreenshot("Verified Payment Modes are displayed");
 	}
 	
     /**
@@ -162,7 +162,7 @@ public class PurchaseAction extends utilities{
         	waitForExpectedElement(PurchasePage.goPay).click();
             break;
         default:
-        	//Hooks.stepRecordAndFocusedScreenshot("Payment method is not specified ");
+        	Hooks.stepRecordAndFocusedScreenshot("Payment method is not specified ");
             Assert.fail();
 		}
 	}
@@ -180,7 +180,7 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.cVV));
 		Assert.assertTrue(isElementPresent(PurchasePage.payNow));
 		LOG.info("Verified Debitcard screen displayed");
-		//Hooks.stepRecordAndFocusedScreenshot("Verified Debitcard screen displayed");
+		Hooks.stepRecordAndFocusedScreenshot("Verified Debitcard screen displayed");
 	}
 	
     /**
@@ -196,7 +196,7 @@ public class PurchaseAction extends utilities{
         clearEnterText(PurchasePage.expiryDate, ExpiryDate);
         clearEnterText(PurchasePage.cVV, CVVNumber);
         LOG.info("Enter Card details Successfully");
-      //Hooks.stepRecordAndFocusedScreenshot("Enter Card details Successfully");
+        Hooks.stepRecordAndFocusedScreenshot("Enter Card details Successfully");
     }
 
     /**
@@ -212,7 +212,7 @@ public class PurchaseAction extends utilities{
             waitForExpectedElement(PurchasePage.payNow).click();
             LOG.info("PayNow button clicked -> " + PurchasePage.checkOutBtn.toString());
         } catch (Exception exception) {
-            //Hooks.stepRecordAndFocusedScreenshot("Failed to Click PayNow button " + exception.getMessage());
+            Hooks.stepRecordAndFocusedScreenshot("Failed to Click PayNow button " + exception.getMessage());
             Assert.fail();
         }
 	}
@@ -227,7 +227,7 @@ public class PurchaseAction extends utilities{
         clearEnterText(PurchasePage.passwordOtp, bankOTP);
         waitForExpectedElement(PurchasePage.submitOtp).click();
         LOG.info("Enter OTP Successfully");
-      //Hooks.stepRecordAndFocusedScreenshot("Enter OTP Successfully");
+        Hooks.stepRecordAndFocusedScreenshot("Enter OTP Successfully");
     }
     
     /**
@@ -240,12 +240,12 @@ public class PurchaseAction extends utilities{
     	if(transactionStatus.contains("Thank you")) {
     		Assert.assertEquals("Verify Transaction Successfull status is displayed", transactionStatus, getText(MidtransPage.transactionSuccessStatus));
             LOG.info("Successfully got the transactionn status");
-          //Hooks.stepRecordAndFocusedScreenshot("Successfully got the transactionn status");
+            Hooks.stepRecordAndFocusedScreenshot("Successfully got the transactionn status");
     	}
     	else {
     		Assert.assertEquals("Verify Transaction failed status is displayed", transactionStatus, getText(PurchasePage.transactionStatusFail));
             LOG.info("Transaction got fail status");
-          //Hooks.stepRecordAndFocusedScreenshot("Transaction got fail status");
+            Hooks.stepRecordAndFocusedScreenshot("Transaction got fail status");
     	}
 
     }

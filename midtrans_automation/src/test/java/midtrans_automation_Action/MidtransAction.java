@@ -36,12 +36,11 @@ public class MidtransAction extends utilities {
 			System.out.println("midtrans page is loaded");
 			Assert.assertEquals(getCurrentUrl(), url);
 			LOG.info("Midtrans Page is loaded Successfully ");
-			// Hooks.stepRecordAndFocusedScreenshot("Midtrans Page is loaded Successfully
-			// ");
+			Hooks.stepRecordAndFocusedScreenshot("Midtrans Page is loaded Successfully");
 		} else {
 			LOG.error("Midtrans Page is not loaded Properly ");
 			Assert.fail();
-			// Hooks.stepRecordAndFocusedScreenshot("Midtrans Page is not loaded Properly");
+			Hooks.stepRecordAndFocusedScreenshot("Midtrans Page is not loaded Properly");
 		}
 	}
 
@@ -63,6 +62,6 @@ public class MidtransAction extends utilities {
 		Assert.assertEquals(buyNow, getText(MidtransPage.buyNow));
 		Assert.assertEquals(midtransSubHeader, getText(MidtransPage.midtransSubHeader));
 		LOG.info("Midtrans Page content verified Successfully ");
-		// Hooks.stepRecordAndFocusedScreenshot("Midtrans Page content verified Successfully");
+		Hooks.stepRecordAndFocusedScreenshot("Midtrans Page content verified Successfully");
 	}
 }
