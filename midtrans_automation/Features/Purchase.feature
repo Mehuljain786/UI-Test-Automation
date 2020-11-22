@@ -20,11 +20,11 @@ Feature: Purchase Midtrans Pillow
     Then Display Credit Debit Card detail screen
     And User enter "<Card_Number>" in card number field "<Expiry_Date>" and "<CVV_Number>" in CVV field
     And Click on PayNow button
-    And User enter "<Banks_OTP>" in Password field and click submit
+    And User enter "<Banks_OTP>" in Password field and click submit	
     Then Display "<Payment_status>" Transaction status
     
     Examples: 
     | Card_Number | Expiry_Date | CVV_Number | Banks_OTP | Payment_status |
-    | 4811 1111 1111 1114 | 12/24 | 123 | 112233 | Thank you for your purchase |
-   # | 4811 1111 1111 1113 | 12/24 | 123 | 112233 | Transaction failed |
+    | 4811 1111 1111 1114 | 12/24 | 123 | 112233 | Thank you for your purchase. |
+    | 4911 1111 1111 1113 | 12/24 | 123 | 112233 | Transaction failed |
    

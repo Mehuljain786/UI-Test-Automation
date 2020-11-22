@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import cucumber.api.java.After;
 import io.cucumber.java.en.*;
 import midtrans_automation_Action.PurchaseAction;
 
@@ -60,14 +61,16 @@ public class PurchaseSteps {
 	    PurchaseAction.clickOnPayNow();
 	}
 	
-	@And("User enter \"([^\"]*)\" in Password field and click submit")
+	@And("User enter \"([^\"]*)\" in Password field and click submit$")
 	public void user_enter_bank_otp(String bankOtp) {
 	    PurchaseAction.enterOtp(bankOtp);
 	}
 	
-	@Then("Display \"([^\"]*)\" Transaction status")
+	@Then("Display \"([^\"]*)\" Transaction status$")
 	public void displayTransactionstatus(String PaymentStatus) {
 	    PurchaseAction.verifyPaymentstatus(PaymentStatus);
 	}
+	
+	
 	
 }

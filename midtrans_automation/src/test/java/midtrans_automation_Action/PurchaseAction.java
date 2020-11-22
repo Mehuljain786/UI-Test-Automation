@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import core.utilities;
 import midtrans_automation_pageObject.MidtransPage;
 import midtrans_automation_pageObject.PurchasePage;
-import stepDefinitions.Hooks;
+
 
 public class PurchaseAction extends utilities{
 	private static final Logger LOG = LoggerFactory.getLogger(PurchaseAction.class);
@@ -40,7 +40,6 @@ public class PurchaseAction extends utilities{
             waitForExpectedElement(MidtransPage.buyNow).click();
             LOG.info("Element clicked -> " + MidtransPage.buyNow.toString());
         } catch (Exception exception) {
-            //Hooks.stepRecordAndFocusedScreenshot("Failed to click BuyNow element " + exception.getMessage());
             Assert.fail();
         }
 	}
@@ -56,7 +55,6 @@ public class PurchaseAction extends utilities{
 		LOG.info("Element Shoping card displayed -> " + PurchasePage.shopingCardHeading.toString());
 		Assert.assertTrue("Verify Card item count should be number",
 				MatchTextwithRegex(CardItemCount, getText(PurchasePage.cardItemCount)));
-		//Hooks.stepRecordAndFocusedScreenshot("Verified Shopping card page title and card item count");
 	}
 	
     /**
@@ -77,7 +75,6 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.checkOutBtn));
 		Assert.assertTrue(isElementPresent(PurchasePage.cancelBtn));
 		LOG.info("Verified Customer Details displayed");
-		//Hooks.stepRecordAndFocusedScreenshot("Verified Customer Details displayed");
 	}
 	
     /**
@@ -93,7 +90,6 @@ public class PurchaseAction extends utilities{
             waitForExpectedElement(PurchasePage.checkOutBtn).click();
             LOG.info("Checkout button clicked -> " + PurchasePage.checkOutBtn.toString());
         } catch (Exception exception) {
-            //Hooks.stepRecordAndFocusedScreenshot("Failed to Click Checkout element " + exception.getMessage());
             Assert.fail();
         }
 	}
@@ -109,9 +105,7 @@ public class PurchaseAction extends utilities{
 		Assert.assertEquals(OrderSummary, getText(PurchasePage.orderSummaryHeading));
 		Assert.assertEquals(MidtransAction.productAmount, getText(PurchasePage.amountOrderSummary));
 		Assert.assertTrue(isElementPresent(PurchasePage.continueBtn));
-		Assert.assertTrue(isElementPresent(PurchasePage.crossicon));
 		LOG.info("Verified Order Summary content displayed");
-		Hooks.stepRecordAndFocusedScreenshot("Verified Order Summary content displayed");
 	}
 	
     /**
@@ -121,14 +115,13 @@ public class PurchaseAction extends utilities{
      */
 	public static void clickContinueButton() {
 		try {
-			frameToBeAvailableAndSwitchToIt(PurchasePage.orderSummaryFrame);
             elementToBeClickable(PurchasePage.continueBtn);
             LOG.info("Continue for click -> " + PurchasePage.continueBtn.toString());
             highLightElement(PurchasePage.continueBtn);
-            waitForExpectedElement(PurchasePage.continueBtn).click();
-            LOG.info("Continue button clicked -> " + PurchasePage.continueBtn.toString());
+            clickOnElementWithJSExecutor(PurchasePage.continueBtn);
+            LOG.info("Continue button clicked");
         } catch (Exception exception) {
-            Hooks.stepRecordAndFocusedScreenshot("Failed to Click on Continue element " + exception.getMessage());
+        	LOG.info("Failed to Click on Continue element " + exception.getMessage());
             Assert.fail();
         }
 	}
@@ -143,7 +136,6 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.backChevron));
 		Assert.assertTrue(isElementPresent(PurchasePage.creditDebitCard));
 		LOG.info("Verified Payment Modes are displayed");
-		Hooks.stepRecordAndFocusedScreenshot("Verified Payment Modes are displayed");
 	}
 	
     /**
@@ -162,7 +154,6 @@ public class PurchaseAction extends utilities{
         	waitForExpectedElement(PurchasePage.goPay).click();
             break;
         default:
-        	Hooks.stepRecordAndFocusedScreenshot("Payment method is not specified ");
             Assert.fail();
 		}
 	}
@@ -180,7 +171,6 @@ public class PurchaseAction extends utilities{
 		Assert.assertTrue(isElementPresent(PurchasePage.cVV));
 		Assert.assertTrue(isElementPresent(PurchasePage.payNow));
 		LOG.info("Verified Debitcard screen displayed");
-		Hooks.stepRecordAndFocusedScreenshot("Verified Debitcard screen displayed");
 	}
 	
     /**
@@ -196,7 +186,6 @@ public class PurchaseAction extends utilities{
         clearEnterText(PurchasePage.expiryDate, ExpiryDate);
         clearEnterText(PurchasePage.cVV, CVVNumber);
         LOG.info("Enter Card details Successfully");
-        Hooks.stepRecordAndFocusedScreenshot("Enter Card details Successfully");
     }
 
     /**
@@ -209,10 +198,10 @@ public class PurchaseAction extends utilities{
             elementToBeClickable(PurchasePage.payNow);
             LOG.info("PayNow for click -> " + PurchasePage.payNow.toString());
             highLightElement(PurchasePage.payNow);
-            waitForExpectedElement(PurchasePage.payNow).click();
-            LOG.info("PayNow button clicked -> " + PurchasePage.checkOutBtn.toString());
+            clickOnElementWithJSExecutor(PurchasePage.payNow);
+            waitForExpectedElement(PurchasePage.creditDebitCardHeading);
         } catch (Exception exception) {
-            Hooks.stepRecordAndFocusedScreenshot("Failed to Click PayNow button " + exception.getMessage());
+            LOG.info("PayNow button is not able to click");
             Assert.fail();
         }
 	}
@@ -224,10 +213,12 @@ public class PurchaseAction extends utilities{
      * @author Mehul
      */
     public static void enterOtp(String bankOTP) {
+    	switchToFrame(0);
+    	//frameToBeAvailableAndSwitchToIt(PurchasePage.OTPFrame);
+    	waitForExpectedElement(PurchasePage.passwordOtp);
         clearEnterText(PurchasePage.passwordOtp, bankOTP);
-        waitForExpectedElement(PurchasePage.submitOtp).click();
+        clickOnElementWithJSExecutor(PurchasePage.submitOtp);
         LOG.info("Enter OTP Successfully");
-        Hooks.stepRecordAndFocusedScreenshot("Enter OTP Successfully");
     }
     
     /**
@@ -240,13 +231,11 @@ public class PurchaseAction extends utilities{
     	if(transactionStatus.contains("Thank you")) {
     		Assert.assertEquals("Verify Transaction Successfull status is displayed", transactionStatus, getText(MidtransPage.transactionSuccessStatus));
             LOG.info("Successfully got the transactionn status");
-            Hooks.stepRecordAndFocusedScreenshot("Successfully got the transactionn status");
     	}
     	else {
+    		frameToBeAvailableAndSwitchToIt(PurchasePage.orderSummaryFrame);
     		Assert.assertEquals("Verify Transaction failed status is displayed", transactionStatus, getText(PurchasePage.transactionStatusFail));
             LOG.info("Transaction got fail status");
-            Hooks.stepRecordAndFocusedScreenshot("Transaction got fail status");
     	}
-
     }
 }

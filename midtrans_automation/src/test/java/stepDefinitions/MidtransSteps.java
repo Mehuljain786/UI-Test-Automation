@@ -1,14 +1,10 @@
 package stepDefinitions;
 
-import core.ExecutionRecord;
-import core.Props;
-import cucumber.api.Scenario;
-import cucumber.api.java.Before;
 import io.cucumber.java.en.*;
 import midtrans_automation_Action.MidtransAction;
 
 public class MidtransSteps{
-	
+    
 	@Given("User will Lauch midtrans site in browser")
 	public void user_will_Lauch_midtrans_site_in_browser() throws Throwable{
 		MidtransAction.navigatesTomidtrans();	

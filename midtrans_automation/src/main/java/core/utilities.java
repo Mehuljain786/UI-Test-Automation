@@ -146,6 +146,13 @@ public abstract class utilities {
     }
     
     /**
+     * Click on element using JavaScript
+     **/
+    public static void clickOnElementWithJSExecutor(final By by){
+        ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", waitForExpectedElement(by));
+    }
+    
+    /**
      * An expectation for checking an element is visible and enabled such that you
      * can click it.
      *
@@ -165,9 +172,22 @@ public abstract class utilities {
      **/
 
     protected static void clearEnterText(By by, String inputText) {
+    	waitForExpectedElement(by).click();
         waitForExpectedElement(by).clear();
         waitForExpectedElement(by).sendKeys(inputText);
         highLightElement(by);
+    }
+    
+    /**
+     * Wrapper for sendKeys in Input Text box
+     *
+     * @param by Element location found by css, xpath, id etc...
+     * @param inputText text to be entered
+     **/
+
+    protected static void EnterText(By by, String inputText) {
+    	waitForExpectedElement(by).click();
+        waitForExpectedElement(by).sendKeys(inputText);
     }
     
     /**
@@ -187,7 +207,11 @@ public abstract class utilities {
     }
 
     public static void switchToParentFrame(){
-
         webDriver.switchTo().defaultContent();
     }
+    
+    public static void switchToFrame(int framenumber){
+        webDriver.switchTo().frame(framenumber);
+    }
+    
 }

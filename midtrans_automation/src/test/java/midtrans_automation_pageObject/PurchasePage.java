@@ -30,11 +30,13 @@ public class PurchasePage {
 	 public static By creditDebitCard = By.xpath("//*[contains(text(),'Credit/Debit Card')]");
 	 public static By goPay = By.xpath("//div[contains(text(),'GoPay')][1]");
 	 public static By cardNumber = By.name("cardnumber");
-	 public static By expiryDate = By.xpath("//div[contains(@class,'card-container')][2]/div[2]");
-	 public static By cVV = By.xpath("//div[contains(@class,'card-container')][2]/div[3]");
+	 public static By expiryDate = By.xpath("//div[contains(@class,'card-container')][2]/div[2]/input");
+	 public static By cVV = By.xpath("//div[contains(@class,'card-container')][2]/div[3]/input");
 	 public static By payNow = By.xpath("//span[contains(text(),'Pay Now')]");
+	 public static By creditDebitCardHeading = By.xpath("//p[contains(text(),'Credit/Debit Card')]");
 	 public static By passwordOtp = By.xpath("//input[@id='PaRes']");
 	 public static By submitOtp = By.name("ok");
 	 public static By transactionStatusFail = By.xpath("//div[contains(@class,'text-failed')][1]/span");
 	 public static By orderSummaryFrame = By.xpath("//iframe[(@id = 'snap-midtrans')]");
+	 public static By OTPFrame = By.xpath("//iframe[(@id = 'snap-midtrans')]//iframe[contains(@src,'token')]");
 }
